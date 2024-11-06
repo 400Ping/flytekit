@@ -420,10 +420,11 @@ class ImperativeWorkflow(WorkflowBase):
     """
 
     def __init__(
-        self,
-        name: str,
-        failure_policy: Optional[WorkflowFailurePolicy] = None,
-        interruptible: bool = False,
+    self,
+    name: str,
+    failure_policy: Optional[WorkflowFailurePolicy] = None,
+    interruptible: bool = False,
+    on_failure: Optional[Union[WorkflowBase, Task]] = None,
     ):
         metadata = WorkflowMetadata(on_failure=failure_policy or WorkflowFailurePolicy.FAIL_IMMEDIATELY)
         workflow_metadata_defaults = WorkflowMetadataDefaults(interruptible)
