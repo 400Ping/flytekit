@@ -864,7 +864,7 @@ async def binding_data_from_python_std(
             try:
                 lt_type = expected_literal_type.union_type.variants[i]
                 python_type = get_args(t_value_type)[i] if t_value_type else None
-                return await binding_data_from_python_std(ctx, lt_type, t_value, python_type, nodes)
+                await binding_data_from_python_std(ctx, lt_type, t_value, cast(type, python_type), nodes)
             except Exception:
                 logger.debug(
                     f"failed to bind data {t_value} with literal type {expected_literal_type.union_type.variants[i]}."
